@@ -28,6 +28,7 @@ def input_number_of_sets():
             print(" --- Ingrese por lo menos 2 conjuntos ---")      
             num_sets = int(input("¿Cuántos conjuntos va a consultar? -> "))
             if num_sets >= 2:
+                return num_sets
                 break
             else:
                 print("Por favor, ingrese al menos 2 conjuntos.\n")
@@ -38,6 +39,7 @@ def input_size_of_set():
     while True:
         try:
             size = int(input("¿Cuantos valores quiere agregar? -> "))
+            return size
             break
         except ValueError:
             print("Caracter invalido\n")
@@ -46,7 +48,6 @@ def input_size_of_set():
 sets = []
 num_sets = input_number_of_sets()
 size = input_size_of_set()
-
 
 for x in range(num_sets):
     s = set_values(size)

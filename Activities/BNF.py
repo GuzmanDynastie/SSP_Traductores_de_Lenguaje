@@ -1,102 +1,103 @@
 N = ["<real>:=", "<entero>", "<fraccion>", "<entero-sin-signo>", "<entero-con-signo>", "<digito>"]
 
-cadena = input("Ingrese el digito a convertir a BNF: -> ")
-numero = float(cadena)
+text_string = input("Ingrese el digito a convertir a BNF: -> ")
+num_text_string = float(text_string)
 
-digitos = []
-digitos_decimal = []
-lista = lambda: ''.join(digitos)
-lista2 = lambda: ''.join(digitos_decimal)
+int_digits = []
+decimal_digits = []
+list_int_digits = lambda: ''.join(int_digits)
+list_decimal_digits = lambda: ''.join(decimal_digits)
 
-if '-' in cadena:
-    if '.' in cadena:
-        valor_entero = int(numero)
-        parte_decimal = str(numero).split('.')[1] if '.' in str(numero) else '0'
-        valor_decimal = str('.'+parte_decimal)
+if '-' in text_string:
+    if '.' in text_string:
+        integer_value = int(num_text_string)
+        decimal_part = str(num_text_string).split('.')[1] if '.' in str(num_text_string) else '0'
+        decimal_value = str('.' + decimal_part)
 
-        length_valor_decimal = len(str(valor_decimal).split('.')[1])
+        length_decimal_value = len(str(decimal_value).split('.')[1])
 
-        if valor_entero == 0:
-            length_valor_entero = len(str(valor_entero))
+        if integer_value == 0:
+            length_int_value = len(str(integer_value))
             print(N[0] + N[1] + N[2])
             print(N[0] + N[4] + N[2])
             print(N[0] + '-' + N[3] + N[2])
             
-            for x in range(length_valor_decimal):
-                digitos_decimal.append(N[5])
+            for x in range(length_decimal_value):
+                decimal_digits.append(N[5])
 
             print(N[0] + '-' + N[5] + N[2])
             print(N[0] + '-' + N[5] + '.' + N[3])
-            print(N[0] + '-' + N[5] + '.' + lista2())
+            print(N[0] + '-' + N[5] + '.' + list_decimal_digits())
             
         else:
-            length_valor_entero = len(str(valor_entero).split('-')[1])
+            length_int_value = len(str(integer_value).split('-')[1])
             print(N[0] + N[1] + N[2])
             print(N[0] + N[4] + N[2])
             print(N[0] + '-' + N[3] + N[2])
-            for x in range(length_valor_entero):
-                digitos.append(N[5])
+            for x in range(length_int_value):
+                int_digits.append(N[5])
 
-            print(N[0] + '-' + lista() + N[2])
-            print(N[0] + '-' + lista() + '.' + N[3])
+            print(N[0] + '-' + list_int_digits() + N[2])
+            print(N[0] + '-' + list_int_digits() + '.' + N[3])
 
-            for x in range(length_valor_decimal):
-                digitos_decimal.append(N[5])
+            for x in range(length_decimal_value):
+                decimal_digits.append(N[5])
             
-            print(N[0] + '-' + lista() + '.' + lista2())
+            print(N[0] + '-' + list_int_digits() + '.' + list_decimal_digits())
     else:
-        valor_entero = int(numero)
-        length_valor_entero = len(str(valor_entero).split('-')[1])
+        integer_value = int(num_text_string)
+        length_int_value = len(str(integer_value).split('-')[1])
 
         print(N[0] + N[1])
         print(N[0] + N[4])
         print(N[0] + '-' + N[3])
-        for x in range(length_valor_entero):
-            digitos.append(N[5])
+        for x in range(length_int_value):
+            int_digits.append(N[5])
 
-        print(N[0] + '-' + lista())
+        print(N[0] + '-' + list_int_digits())
 
 else:
-    if '.' in cadena:
-        valor_entero = int(numero)
-        parte_decimal = str(numero).split('.')[1] if '.' in str(numero) else '0'
-        valor_decimal = str('.'+parte_decimal)
+    if '.' in text_string:
+        integer_value = int(num_text_string)
+        decimal_part = str(num_text_string).split('.')[1] if '.' in str(num_text_string) else '0'
+        decimal_value = str('.' + decimal_part)
 
-        length_valor_decimal = len(str(valor_decimal).split('.')[1])
+        length_decimal_value = len(str(decimal_value).split('.')[1])
 
-        if valor_entero == 0:
-            length_valor_entero = len(str(valor_entero))
+        if integer_value == 0:
+            length_int_value = len(str(integer_value))
             print(N[0] + N[1] + N[2])
             print(N[0] + N[3] + N[2])
             
-            for x in range(length_valor_decimal):
-                digitos_decimal.append(N[5])
+            for x in range(length_decimal_value):
+                decimal_digits.append(N[5])
 
             print(N[0] + N[5] + N[2])
             print(N[0] + N[5] + '.' + N[3])
-            print(N[0] + N[5] + '.' + lista2())
+            print(N[0] + N[5] + '.' + list_decimal_digits())
         
         else:
-            length_valor_entero = len(str(valor_entero))
+            length_int_value = len(str(integer_value))
             print(N[0] + N[1] + N[2])
             print(N[0] + N[3] + N[2])
-            for x in range(length_valor_entero):
-                digitos.append(N[5])
+            for x in range(length_int_value):
+                int_digits.append(N[5])
             
-            print(N[0] + lista() + N[2])
-            print(N[0] + lista() + '.' + N[3])
+            print(N[0] + list_int_digits() + N[2])
+            print(N[0] + list_int_digits() + '.' + N[3])
 
-            for x in range(length_valor_decimal):
-                digitos_decimal.append(N[5])
+            for x in range(length_decimal_value):
+                decimal_digits.append(N[5])
 
-            print(N[0] + lista() + '.' + lista2())
+            print(N[0] + list_int_digits() + '.' + list_decimal_digits())
     
     else:
-        valor_entero = int(numero)
-        length_valor_entero = len(str(valor_entero))
+        integer_value = int(num_text_string)
+        length_int_value = len(str(integer_value))
 
+        print(N[0] + N[1])
         print(N[0] + N[3])
-        for x in range(length_valor_entero):
-            digitos.append(N[5])
+        for x in range(length_int_value):
+            int_digits.append(N[5])
 
-        print(N[0] + lista())    
+        print(N[0] + list_int_digits())    

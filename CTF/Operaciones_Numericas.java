@@ -16,11 +16,62 @@ public class Operaciones_Numericas {
             builder.append(digito);
         }
 
-        if (leadingZeros) {
-            builder.append("0");
+        return (builder.length() == 0) ? "0" : builder.toString();
+    }
+
+    private static String dividirNumeros(String numero1, String numero2) {
+        if (numero2.equals("0")) {
+            return "Error: División por cero";
         }
 
-        return (builder.length() == 0) ? "0" : builder.toString(); // Operador ternario
+        if (numero1.equals("0")) {
+            return "0";
+        }
+
+        StringBuilder cociente = new StringBuilder();
+        StringBuilder dividendo = new StringBuilder(numero1);
+
+        int divisor = Integer.parseInt(numero2);
+        int index = 0;
+        int residuo = 0;
+
+        while (index < numero1.length()) {
+            int parteEntera = Integer.parseInt(dividendo.substring(index, index + 1));
+            int resultadoDivision = (residuo * 10 + parteEntera) / divisor;
+
+            cociente.append(resultadoDivision);
+            residuo = (residuo * 10 + parteEntera) % divisor;
+
+            index++;
+        }
+
+        return cociente.toString();
+    }
+
+    private static String calcularResiduo(String numero1, String numero2) {
+        if (numero2.equals("0")) {
+            return "Error: División por cero.";
+        }
+    
+        StringBuilder dividendo = new StringBuilder(numero1);
+        int divisor = Integer.parseInt(numero2);
+    
+        int index = 0;
+        while (index < numero1.length() && Integer.parseInt(dividendo.toString()) >= divisor) {
+            int parteEntera = Integer.parseInt(dividendo.substring(index, index + 1));
+            int residuo = parteEntera % divisor;
+    
+            if (index + 1 < numero1.length()) {
+                int siguienteDigito = Integer.parseInt(dividendo.substring(index + 1, index + 2));
+    
+                residuo = residuo * 10 + siguienteDigito;
+                dividendo.replace(index + 1, index + 2, String.valueOf(residuo));
+            }
+    
+            index++;
+        }
+    
+        return String.valueOf(Integer.parseInt(dividendo.toString()) % divisor);
     }
 
     private static String multiplicarNumeros(String numero1, String numero2) {
@@ -29,7 +80,6 @@ public class Operaciones_Numericas {
 
         for (int i = 0; i < numero1.length(); i++) {
             int digito1 = Character.getNumericValue(numero1.charAt(numero1.length() - 1 - i));
-
             int carry = 0;
 
             for (int j = 0; j < numero2.length(); j++) {
@@ -39,15 +89,16 @@ public class Operaciones_Numericas {
                 carry = producto / 10;
                 resultado[maxLength - 1 - i - j] = producto % 10;
             }
+
             resultado[maxLength - 1 - i - numero2.length()] += carry;
         }
+
         return convertirArregloString(resultado);
     }
 
     private static String restarNumeros(String numero1, String numero2) {
         int maxLength = Math.max(numero1.length(), numero2.length());
         int[] resultado = new int[maxLength];
-
         int carry = 0;
 
         for (int i = 0; i < maxLength; i++) {
@@ -55,17 +106,23 @@ public class Operaciones_Numericas {
             int digito2 = (i < numero2.length()) ? Character.getNumericValue(numero2.charAt(numero2.length() - 1 - i)) : 0;
 
             int restarDigitos = digito1 - digito2 - carry;
-            carry = restarDigitos / 10;
-            resultado[maxLength - 1 - i] = restarDigitos % 10;
-        }
-        return convertirArregloString(resultado);
+            
+            if (restarDigitos < 0) {
+                restarDigitos += 10;
+                carry = 1;
+            } else {
+                carry = 0;
+            }
 
+            resultado[maxLength - 1 - i] = restarDigitos;
+        }
+
+        return convertirArregloString(resultado);
     }
 
     private static String sumarNumeros(String numero1, String numero2) {
         int maxLength = Math.max(numero1.length(), numero2.length() + 1);
         int[] resultado = new int[maxLength];
-
         int carry = 0;
 
         for (int i = 0; i < maxLength; i++) {
@@ -76,6 +133,7 @@ public class Operaciones_Numericas {
             carry = sumaDigitos / 10;
             resultado[maxLength - 1 - i] = sumaDigitos % 10;
         }
+
         return convertirArregloString(resultado);
     }
 
@@ -88,13 +146,19 @@ public class Operaciones_Numericas {
         System.out.println("Ingrese el segundo numero:");
         String numero2 = scanner.nextLine();
 
-        String suma = Operaciones_Numericas.sumarNumeros(numero1, numero2);
+        String suma = sumarNumeros(numero1, numero2);
         System.out.println("El resultado de la suma es: " + suma);
 
-        String resta = Operaciones_Numericas.restarNumeros(numero1, numero2);
+        String resta = restarNumeros(numero1, numero2);
         System.out.println("El resultado de la resta es: " + resta);
 
-        String multiplicacion = Operaciones_Numericas.multiplicarNumeros(numero1, numero2);
+        String multiplicacion = multiplicarNumeros(numero1, numero2);
         System.out.println("El resultado de la multiplicacion es: " + multiplicacion);
+
+        String division = dividirNumeros(numero1, numero2);
+        System.out.println("El resultado de la division es: " + division);
+
+        String residuo = calcularResiduo(numero1, numero2);
+        System.out.println("El residuo de la division es: " + residuo);
     }
 }

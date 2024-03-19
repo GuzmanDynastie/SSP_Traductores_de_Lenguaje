@@ -1,0 +1,9 @@
+El programa FLEX que se ha diseñado tiene la capacidad de identificar y clasificar diferentes tipos de cadenas de texto según los patrones especificados en el ejercicio 1. Cuando el programa encuentra una cadena que coincide con alguno de los patrones especificados, emite un mensaje que indica el tipo de cadena detectada.
+
+Por ejemplo, si el programa encuentra una cadena que representa un número real con coma flotante, imprimirá en la salida "REAL_COMA_FLOTANTE". Este tipo de cadena se caracteriza por tener una parte entera seguida de un punto decimal y una parte fraccionaria.
+
+Si la cadena detectada corresponde a un número real en notación exponencial, el programa imprimirá "REAL_EXPONENCIAL". Este tipo de cadena se representa con una parte entera opcional seguida de un punto decimal opcional, seguido por la letra 'e' o 'E' y un exponente que puede ser positivo o negativo.
+
+Además, si la cadena detectada es un número entero, el programa imprimirá "ENTERO". Este tipo de cadena se compone únicamente de dígitos numéricos, pudiendo ser positivo o negativo.
+
+En resumen, este programa FLEX ofrece una manera eficiente de analizar y clasificar cadenas de texto según su estructura, permitiendo identificar números enteros, números reales con coma flotante y números reales en notación exponencial de manera precisa.

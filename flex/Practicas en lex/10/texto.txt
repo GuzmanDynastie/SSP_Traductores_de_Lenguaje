@@ -1,0 +1,7 @@
+Este es un ejemplo de texto que contiene números de teléfono en varios formatos.
+Algunos ejemplos de números de teléfono móvil pueden ser: 555-123-4567 o 9876543210.
+También podemos encontrar números de teléfono fijo como: 123-456-7890 o 987-6543.
+Recuerda que el formato para los números de teléfono móvil es xxx-xxx-xxxx o xxxxxxxxxx,
+mientras que para los números de teléfono fijo es xxx-xxx-xxxx o xxx-xxxx.
+
+El programa Flex diseñado para este ejemplo identificará y clasificar estos números de teléfono según sus tipos.

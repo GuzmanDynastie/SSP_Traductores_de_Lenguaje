@@ -10,11 +10,11 @@
 .        { putchar(yytext[0]); } /* Imprimir cualquier otro carácter */
 %%
 
-int yywrap() {
-    return 1;
-}
-
 int main() {
     yylex();
     return 0;
+}
+
+int yywrap() {
+    return 1;
 }

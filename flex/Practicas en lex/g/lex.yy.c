@@ -286,7 +286,7 @@ static void yy_fatal_error YY_PROTO(( yyconst char msg[] ));
 #define YY_END_OF_BUFFER 4
 static yyconst short int yy_accept[10] =
     {   0,
-        0,    0,    4,    2,    3,    2,    1,    1,    0
+        0,    0,    4,    2,    3,    2,    0,    1,    0
     } ;
 
 static yyconst int yy_ec[256] =
@@ -294,9 +294,9 @@ static yyconst int yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    2,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    3,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    3,    1,    1,    4,    4,    4,
-        4,    4,    4,    4,    4,    4,    4,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -321,30 +321,30 @@ static yyconst int yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static yyconst int yy_meta[5] =
+static yyconst int yy_meta[4] =
     {   0,
-        1,    1,    1,    2
+        1,    1,    1
     } ;
 
 static yyconst short int yy_base[11] =
     {   0,
-        0,    0,    6,    7,    7,    0,    0,    0,    7,    3
+        0,    0,    7,    8,    8,    4,    3,    8,    8,    3
     } ;
 
 static yyconst short int yy_def[11] =
     {   0,
-        9,    1,    9,    9,    9,   10,   10,   10,    0,    9
+        9,    1,    9,    9,    9,   10,   10,    9,    0,    9
     } ;
 
 static yyconst short int yy_nxt[12] =
     {   0,
-        4,    5,    6,    7,    8,    9,    3,    9,    9,    9,
+        4,    5,    6,    7,    8,    8,    9,    3,    9,    9,
         9
     } ;
 
 static yyconst short int yy_chk[12] =
     {   0,
-        1,    1,    1,    1,   10,    3,    9,    9,    9,    9,
+        1,    1,    1,   10,    7,    6,    3,    9,    9,    9,
         9
     } ;
 
@@ -359,10 +359,10 @@ static char *yy_last_accepting_cpos;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "02.l"
+#line 1 "07.l"
 #define INITIAL 0
-/* Números enteros con y sin signo */
-#line 4 "02.l"
+/* Comentarios */
+#line 4 "07.l"
 #include <stdio.h>
 #line 368 "lex.yy.c"
 
@@ -515,7 +515,7 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 10 "02.l"
+#line 7 "07.l"
 
 #line 521 "lex.yy.c"
 
@@ -574,7 +574,7 @@ yy_match:
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 7 );
+		while ( yy_base[yy_current_state] != 8 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -602,17 +602,17 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 11 "02.l"
-{ printf("Número entero: %s\n", yytext); }
+#line 8 "07.l"
+/* No hacemos nada, simplemente ignoramos el comentario */
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 12 "02.l"
+#line 9 "07.l"
 ;
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 13 "02.l"
+#line 10 "07.l"
 ECHO;
 	YY_BREAK
 #line 619 "lex.yy.c"
@@ -1501,10 +1501,14 @@ int main()
 	return 0;
 	}
 #endif
-#line 13 "02.l"
+#line 10 "07.l"
 
 
 int main() {
     yylex();
     return 0;
+}
+
+int yywrap() {
+    return 1;
 }

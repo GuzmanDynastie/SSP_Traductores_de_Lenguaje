@@ -1,0 +1,6 @@
+Este es un texto de ejemplo.
+# Esto es un comentario que será eliminado
+Esta es otra línea de texto.
+Y aquí hay más texto.
+# Otro comentario que será eliminado
+Incluso más texto aquí.

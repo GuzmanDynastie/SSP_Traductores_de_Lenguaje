@@ -286,7 +286,7 @@ static void yy_fatal_error YY_PROTO(( yyconst char msg[] ));
 #define YY_END_OF_BUFFER 5
 static yyconst short int yy_accept[9] =
     {   0,
-        0,    0,    5,    3,    4,    1,    2,    0
+        0,    0,    5,    1,    3,    2,    1,    0
     } ;
 
 static yyconst int yy_ec[256] =
@@ -294,9 +294,9 @@ static yyconst int yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    2,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    3,
-        4,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    3,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -321,29 +321,29 @@ static yyconst int yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static yyconst int yy_meta[5] =
+static yyconst int yy_meta[4] =
     {   0,
-        1,    1,    1,    1
+        1,    2,    2
     } ;
 
-static yyconst short int yy_base[9] =
+static yyconst short int yy_base[10] =
     {   0,
-        0,    0,    5,    6,    6,    6,    6,    6
+        0,    0,    5,    0,    6,    6,    0,    6,    3
     } ;
 
-static yyconst short int yy_def[9] =
+static yyconst short int yy_def[10] =
     {   0,
-        8,    1,    8,    8,    8,    8,    8,    0
+        8,    1,    8,    9,    8,    8,    9,    0,    8
     } ;
 
-static yyconst short int yy_nxt[11] =
+static yyconst short int yy_nxt[10] =
     {   0,
-        4,    5,    6,    7,    8,    3,    8,    8,    8,    8
+        4,    5,    6,    7,    8,    3,    8,    8,    8
     } ;
 
-static yyconst short int yy_chk[11] =
+static yyconst short int yy_chk[10] =
     {   0,
-        1,    1,    1,    1,    3,    8,    8,    8,    8,    8
+        1,    1,    1,    9,    3,    8,    8,    8,    8
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -359,10 +359,9 @@ static char *yy_last_accepting_cpos;
 char *yytext;
 #line 1 "06.l"
 #define INITIAL 0
-/* Paréntesis: (, ) */
-#line 4 "06.l"
+#line 2 "06.l"
 #include <stdio.h>
-#line 366 "lex.yy.c"
+#line 365 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -513,9 +512,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 7 "06.l"
+#line 5 "06.l"
 
-#line 519 "lex.yy.c"
+#line 518 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -600,25 +599,25 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 8 "06.l"
-{ printf("Paréntesis izquierdo\n"); }
+#line 6 "06.l"
+{ printf("%s", yytext); }    /* Imprimir texto normal */
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 9 "06.l"
-{ printf("Paréntesis derecho\n"); }
+#line 7 "06.l"
+{ printf("\n"); }             /* Imprimir nueva línea después de ';' */
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 10 "06.l"
-;
+#line 8 "06.l"
+{ printf("%s", yytext); }    /* Imprimir cualquier otro carácter */
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 11 "06.l"
+#line 9 "06.l"
 ECHO;
 	YY_BREAK
-#line 622 "lex.yy.c"
+#line 621 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1504,10 +1503,33 @@ int main()
 	return 0;
 	}
 #endif
-#line 11 "06.l"
+#line 9 "06.l"
 
 
-int main() {
+int main(int argc, char *argv[]) {
+    // Comprobar si se proporciona el nombre del archivo como argumento
+    if (argc != 2) {
+        printf("Uso: %s archivo_de_entrada\n", argv[0]);
+        return 1;
+    }
+
+    // Abrir el archivo de entrada
+    FILE *entrada = fopen(argv[1], "r");
+    if (entrada == NULL) {
+        printf("No se pudo abrir el archivo %s\n", argv[1]);
+        return 1;
+    }
+
+    // Analizar el archivo de entrada
+    yyin = entrada;
     yylex();
+
+    // Cerrar el archivo de entrada
+    fclose(entrada);
+
     return 0;
+}
+
+int yywrap() {
+    return 1;
 }

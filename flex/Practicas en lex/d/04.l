@@ -5,14 +5,18 @@
 %}
 
 DIGITO [0-9]
-NUM_EXP [-]?{DIGITO}+"."?{DIGITO}+"E"[-+]?{DIGITO}+
+NUM_EXP [-]?{DIGITO}+"."?{DIGITO}+"e"[-+]?{DIGITO}+
 
 %%
-{NUM_EXP}    { printf("Número real en notación exponencial: %s\n", yytext); }
+{NUM_EXP}    { printf("Numero real en notacion exponencial: %s\n", yytext); }
 .            ;
 %%
 
 int main() {
     yylex();
     return 0;
+}
+
+int yywrap() {
+    return 1;
 }

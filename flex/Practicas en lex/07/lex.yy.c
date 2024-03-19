@@ -282,11 +282,11 @@ static void yy_fatal_error YY_PROTO(( yyconst char msg[] ));
 	*yy_cp = '\0'; \
 	yy_c_buf_p = yy_cp;
 
-#define YY_NUM_RULES 3
-#define YY_END_OF_BUFFER 4
-static yyconst short int yy_accept[10] =
+#define YY_NUM_RULES 4
+#define YY_END_OF_BUFFER 5
+static yyconst short int yy_accept[9] =
     {   0,
-        0,    0,    4,    2,    3,    2,    0,    1,    0
+        0,    0,    5,    2,    3,    1,    1,    0
     } ;
 
 static yyconst int yy_ec[256] =
@@ -294,9 +294,9 @@ static yyconst int yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    2,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    3,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    3,    3,    3,
+        3,    3,    3,    3,    3,    3,    3,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -323,29 +323,27 @@ static yyconst int yy_ec[256] =
 
 static yyconst int yy_meta[4] =
     {   0,
-        1,    1,    1
+        1,    1,    2
     } ;
 
-static yyconst short int yy_base[11] =
+static yyconst short int yy_base[10] =
     {   0,
-        0,    0,    7,    8,    8,    4,    3,    8,    8,    3
+        0,    0,    5,    6,    6,    0,    0,    6,    2
     } ;
 
-static yyconst short int yy_def[11] =
+static yyconst short int yy_def[10] =
     {   0,
-        9,    1,    9,    9,    9,   10,   10,    9,    0,    9
+        8,    1,    8,    8,    8,    9,    9,    0,    8
     } ;
 
-static yyconst short int yy_nxt[12] =
+static yyconst short int yy_nxt[10] =
     {   0,
-        4,    5,    6,    7,    8,    8,    9,    3,    9,    9,
-        9
+        4,    5,    6,    7,    8,    3,    8,    8,    8
     } ;
 
-static yyconst short int yy_chk[12] =
+static yyconst short int yy_chk[10] =
     {   0,
-        1,    1,    1,   10,    7,    6,    3,    9,    9,    9,
-        9
+        1,    1,    1,    9,    3,    8,    8,    8,    8
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -361,10 +359,10 @@ static char *yy_last_accepting_cpos;
 char *yytext;
 #line 1 "07.l"
 #define INITIAL 0
-/* Comentarios */
-#line 4 "07.l"
+#line 2 "07.l"
 #include <stdio.h>
-#line 368 "lex.yy.c"
+int count = 0; // Variable para almacenar el recuento de números enteros
+#line 366 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -515,9 +513,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 7 "07.l"
+#line 6 "07.l"
 
-#line 521 "lex.yy.c"
+#line 519 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -568,13 +566,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 10 )
+				if ( yy_current_state >= 9 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 8 );
+		while ( yy_base[yy_current_state] != 6 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -602,20 +600,25 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 8 "07.l"
-/* No hacemos nada, simplemente ignoramos el comentario */
+#line 7 "07.l"
+{ count++; }    /* Incrementar el contador cada vez que se detecte un número entero */
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 9 "07.l"
-;
+#line 8 "07.l"
+;               /* Ignorar otros caracteres */
 	YY_BREAK
 case 3:
+YY_RULE_SETUP
+#line 9 "07.l"
+;               /* Ignorar saltos de línea */
+	YY_BREAK
+case 4:
 YY_RULE_SETUP
 #line 10 "07.l"
 ECHO;
 	YY_BREAK
-#line 619 "lex.yy.c"
+#line 622 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -907,7 +910,7 @@ static yy_state_type yy_get_previous_state()
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 10 )
+			if ( yy_current_state >= 9 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -942,11 +945,11 @@ yy_state_type yy_current_state;
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 10 )
+		if ( yy_current_state >= 9 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 9);
+	yy_is_jam = (yy_current_state == 8);
 
 	return yy_is_jam ? 0 : yy_current_state;
 	}
@@ -1504,7 +1507,33 @@ int main()
 #line 10 "07.l"
 
 
-int main() {
+int main(int argc, char *argv[]) {
+    // Comprobar si se proporciona el nombre del archivo como argumento
+    if (argc != 2) {
+        printf("Uso: %s archivo_de_entrada\n", argv[0]);
+        return 1;
+    }
+
+    // Abrir el archivo de entrada
+    FILE *entrada = fopen(argv[1], "r");
+    if (entrada == NULL) {
+        printf("No se pudo abrir el archivo %s\n", argv[1]);
+        return 1;
+    }
+
+    // Analizar el archivo de entrada
+    yyin = entrada;
     yylex();
+
+    // Cerrar el archivo de entrada
+    fclose(entrada);
+
+    // Imprimir el recuento de números enteros detectados
+    printf("Se detectaron %d numeros enteros en el archivo.\n", count);
+
     return 0;
+}
+
+int yywrap() {
+    return 1;
 }

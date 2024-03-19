@@ -8,15 +8,15 @@ DIGITO [0-9]
 NUM_ENTERO [-]?{DIGITO}+
 
 %%
-{NUM_ENTERO}   { printf("Número entero: %s\n", yytext); }
+{NUM_ENTERO}   { printf("Numero entero: %s\n", yytext); }
 .              ;
 %%
-
-int yywrap() {
-    return 1;
-}
 
 int main() {
     yylex();
     return 0;
+}
+
+int yywrap() {
+    return 1;
 }

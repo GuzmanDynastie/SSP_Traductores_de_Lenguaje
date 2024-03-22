@@ -1,9 +1,0 @@
-El texto de ejemplo contiene una serie de numeros y caracteres. El objetivo del programa es contar cuantas veces se encuentran numeros enteros en este texto.
-
-La expresion regular [0-9]+ se utiliza para detectar numeros enteros. Cada vez que se encuentra un numero entero en el texto, el contador se incrementa en uno.
-
-Ademas, para mantener la integridad del analisis, se ignoran otros caracteres utilizando la regla . seguida de ";".
-
-Tambien se ignoran los saltos de linea con la regla "\n" seguida de ";".
-
-Este texto muestra como el programa FLEX cuenta el numero de veces que se detecta un numero entero en un archivo de texto, ignorando otros caracteres y saltos de linea.

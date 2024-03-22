@@ -513,7 +513,7 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 8 "05.l"
+#line 6 "05.l"
 
 #line 519 "lex.yy.c"
 
@@ -600,22 +600,22 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 9 "05.l"
+#line 7 "05.l"
 { count++; }   
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 10 "05.l"
+#line 9 "05.l"
 ;               /* Ignora otros caracteres */
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 11 "05.l"
+#line 10 "05.l"
 ;               /* Ignora saltos de línea */
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 12 "05.l"
+#line 11 "05.l"
 ECHO;
 	YY_BREAK
 #line 622 "lex.yy.c"
@@ -1504,7 +1504,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 12 "05.l"
+#line 11 "05.l"
 
 
 int main() {  

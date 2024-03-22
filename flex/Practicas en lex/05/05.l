@@ -3,10 +3,9 @@
 int count = 0;
 %}
 
-
-
 %%
 [0-9]     { count++; }   
+
 .          ;               /* Ignora otros caracteres */
 \n         ;               /* Ignora saltos de línea */
 %%

@@ -1,9 +1,11 @@
-El texto de ejemplo contiene una serie de numeros y caracteres. El objetivo del programa es contar cuantas veces se encuentran numeros enteros en este texto.
+En el mundo moderno, los números de teléfono son una parte fundamental de nuestra vida cotidiana. Nos conectan con amigos, familiares y negocios en cualquier momento y en cualquier lugar. Con la proliferación de teléfonos móviles, los números de teléfono se han vuelto aún más ubicuos.
 
-La expresion regular [0-9]+ se utiliza para detectar numeros enteros. Cada vez que se encuentra un numero entero en el texto, el contador se incrementa en uno.
+Imagina un escenario en el que necesitas recopilar números de teléfono de un directorio o de un documento de texto. Puede resultar tedioso y propenso a errores buscar manualmente cada número de teléfono. Aquí es donde un programa informático puede ser de gran ayuda.
 
-Ademas, para mantener la integridad del analisis, se ignoran otros caracteres utilizando la regla . seguida de ";".
+Un programa Flex puede ser diseñado para escanear un documento en busca de números de teléfono y extraerlos de manera automática. Por ejemplo, el formato común para los números de teléfono en Estados Unidos es XXX-XXX-XXXX o simplemente XXXXXXXXXX. Un programa Flex puede ser configurado para reconocer estos patrones y extraer los números de teléfono correspondientes.
 
-Tambien se ignoran los saltos de linea con la regla "\n" seguida de ";".
+Al ejecutar este programa en un documento de texto, verías cómo se identifican y se imprimen los números de teléfono móvil encontrados. Esto facilita la tarea de recopilar información de contacto de manera rápida y precisa.
 
-Este texto muestra como el programa FLEX cuenta el numero de veces que se detecta un numero entero en un archivo de texto, ignorando otros caracteres y saltos de linea.
+Por ejemplo, un número de teléfono móvil aleatorio en formato XXX-XXX-XXXX podría ser 555-123-4567, y en formato XXXXXXXXXX podría ser 9876543210.
+
+En resumen, un programa Flex diseñado para identificar números de teléfono puede ser una herramienta útil en muchas situaciones, desde la gestión de contactos hasta la extracción de información de bases de datos.

@@ -1,12 +1,11 @@
 %{
 #include <stdio.h>
-int count = 0;
 %}
 
 %%
-[0-9]+     { count++; }   
-.          ;               /* Ignora otros caracteres */
-\n         ;               /* Ignora saltos de línea */
+[^;\n]+     { printf("%s", yytext); }       /* Imprimir texto normal */
+";"         { printf("\n"); }               /* Imprimir nueva línea después de ';' */
+.|\n        { printf("%s", yytext); }       /* Imprimir cualquier otro carácter */
 %%
 
 int main(int argc, char *argv[]) {
@@ -25,8 +24,6 @@ int main(int argc, char *argv[]) {
     yylex();
 
     fclose(entrada);
-
-    printf("Se detectaron %d numeros enteros en el archivo.\n", count);
 
     return 0;
 }

@@ -1,12 +1,13 @@
-/* Comentarios */
-
 %{
 #include <stdio.h>
 %}
 
 %%
-#.*\n    /* No hacemos nada, simplemente ignoramos el comentario */
-.        ;
+" "+        { putchar(' '); }
+
+"\t\t"+     { putchar('\t'); }
+
+.           { putchar(yytext[0]); }
 %%
 
 int main() {
